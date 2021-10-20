@@ -1,5 +1,6 @@
 package com.starfit.user.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class CharacterDomain {
 	 */
 	public ResponseEntity<List<Character>> getCharList() { 
 		
-		List<Character> list = null;
+		List<Character> list = new ArrayList<>();;
 
 		System.out.println(list);
 		try {
@@ -34,7 +35,8 @@ public class CharacterDomain {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.debug("user counts :"+list.size());
+		
+		log.debug("user counts : {}", list.size());
 		
 		return new ResponseEntity<List<Character>> (list, HttpStatus.OK);
 	}
