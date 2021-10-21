@@ -9,7 +9,7 @@ spec:
   - secretName: tls-secret
   rules:
   - host: teng.169.56.174.139.nip.io
-  - http:
+    http:
       paths:
       - path: /starfit
         pathType: Prefix
