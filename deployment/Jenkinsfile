@@ -65,7 +65,7 @@ podTemplate(
 		// Kubernetes
 		def deployment = props["deployment"]
 		def config = props["config"]
-		def service = props["user-service"]
+		def service = props["service"]
 		def ingress = props["ingress"]
 		def selector_key = props["selector_key"]
 		def selector_val = props["selector_val"]
@@ -130,7 +130,7 @@ podTemplate(
 					sh "kubectl apply -n ${namespace} -f ${config}"
 					sh "kubectl apply -n ${namespace} -f ${deployment}"
 					sh "sleep 5"
-					sh "kubectl apply -n ${namespace} -f ${user-service}"
+					sh "kubectl apply -n ${namespace} -f ${service}"
 //					sh "kubectl apply -n ${namespace} -f ${ingress}"
 				}
 			}
