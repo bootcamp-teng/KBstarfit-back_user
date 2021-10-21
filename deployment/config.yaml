@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: user-config
 data:
-  SERVLET_CONTEXT_PATH: "/teng"
+  SERVLET_CONTEXT_PATH: "/user"
 # MYSQL DB
   DB_SERVER: mysql.teng
   DB_PORT: "3306"
