@@ -65,7 +65,7 @@ podTemplate(
 		// Kubernetes
 		def deployment = props["deployment"]
 		def config = props["config"]
-		def service = props["service"]
+		def service = props["user-service"]
 		def ingress = props["ingress"]
 		def selector_key = props["selector_key"]
 		def selector_val = props["selector_val"]

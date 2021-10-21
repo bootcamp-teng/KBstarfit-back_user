@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: user-config
+  name: starfit-config
 data:
-  SERVLET_CONTEXT_PATH: "/user"
+  SERVLET_CONTEXT_PATH: "/teng"
 # MYSQL DB
   DB_SERVER: mysql.teng
   DB_PORT: "3306"
