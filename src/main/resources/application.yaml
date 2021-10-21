@@ -1,7 +1,7 @@
 server:
-  port: ${service_port:8083}
+  port: ${service_port:8080}
   servlet:
-    context-path: ${SERVLET_CONTEXT_PATH:/starfit}  
+    context-path: ${SERVLET_CONTEXT_PATH:/user}  
 
 spring:  
   application:
