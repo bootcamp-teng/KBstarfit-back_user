@@ -75,6 +75,12 @@ public class UserController {
 		return userService.getUserList(userId);
 	}
 	
+	@GetMapping("/v1/user/all")
+	@ApiOperation(value="모든 유저 가져오기")
+	public ResponseEntity <List<User>> getUserAll() throws Exception {
+		return userService.getUserAll();
+	}	
+	
 	@GetMapping("/v1/user/{Id}")
 	@ApiOperation(value = "유저 상세 조회")
 	public ResponseEntity <Optional<User>> getUserGoal(

@@ -85,4 +85,9 @@ public class UserDomain {
 		}
 		return new ResponseEntity<Optional<User>> (re, HttpStatus.OK);
 	}
+
+	public ResponseEntity<List<User>> getUserAll() {
+		List<User> re = sampleUserRepo.findAll();
+		return new ResponseEntity<List<User>> (re, HttpStatus.OK);
+	}
 }

@@ -61,6 +61,10 @@ public class UserService {
 	public ResponseEntity<Optional<User>> login(User user) {
 		return userDomain.getUser(user);
 	}
+
+	public ResponseEntity<List<User>> getUserAll() {
+		return userDomain.getUserAll();
+	}
 	
 //	public ResponseEntity <String > createTestGoals(int startGoalId, int goalCount) throws Exception { 
 //		return goalDomain.createTestGoals(startGoalId, goalCount);
