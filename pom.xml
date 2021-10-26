@@ -9,10 +9,10 @@
 		<version>2.5.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.mvp</groupId>
-	<artifactId>mvp-spring-user</artifactId>
+	<groupId>com.starfit</groupId>
+	<artifactId>starfit-spring-user</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mvp-spring-user</name>
+	<name>starfit-spring-user</name>
 	<description>Demo project for Spring Boot, mvp-spring-user</description>
 	<properties>
 		<java.version>1.8</java.version>

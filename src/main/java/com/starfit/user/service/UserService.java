@@ -7,34 +7,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.starfit.user.domain.CharacterDomain;
+import com.starfit.user.domain.AvatarDomain;
 import com.starfit.user.domain.UserDomain;
-import com.starfit.user.model.Character;
+import com.starfit.user.model.Avatar;
 import com.starfit.user.model.User;
 
 @Service
 public class UserService {
 	@Autowired
-	private CharacterDomain characterDomain;
+	private AvatarDomain characterDomain;
 	@Autowired
 	private UserDomain userDomain;
 //	
 //	@Autowired
 //	private TestDomain testDomain;
 	
-	public ResponseEntity <List<Character>> getCharList() { 
+	public ResponseEntity <List<Avatar>> getCharList() { 
 		return characterDomain.getCharList();
 	}
 	
-	public ResponseEntity <Optional<Character>> getCharById(Long Id) { 
+	public ResponseEntity <Optional<Avatar>> getCharById(Long Id) { 
 		return characterDomain.getCharById(Id);
 	}
 	
-	public ResponseEntity <String > updateChar(Character sampleChar) throws Exception {
+	public ResponseEntity <String > updateChar(Avatar sampleChar) throws Exception {
 		return characterDomain.updateChar(sampleChar);
 	}
 	
-	public ResponseEntity <String > insertChar(Character sampleChar) throws Exception { 
+	public ResponseEntity <String > insertChar(Avatar sampleChar) throws Exception { 
 		return characterDomain.insertChar(sampleChar);		
 	}
 
@@ -56,6 +56,10 @@ public class UserService {
 
 	public ResponseEntity<Optional<User>> getUser(Long Id) throws Exception {
 		return userDomain.getUser(Id);
+	}
+
+	public ResponseEntity<Optional<User>> login(User user) {
+		return userDomain.getUser(user);
 	}
 	
 //	public ResponseEntity <String > createTestGoals(int startGoalId, int goalCount) throws Exception { 

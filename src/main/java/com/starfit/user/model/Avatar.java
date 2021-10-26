@@ -7,16 +7,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Entity
-@Table(name="Characters")
-public class Character {
+@Getter @Setter
+@Table(name="Avatar")
+public class Avatar {
 	
-	public Character() {
+	public Avatar() {
 		super();
 	}
-	public Character(Long id, String name, String img1, String img2, String img3, String img4, String img5) {
+	public Avatar(Long id, String name, String img1, String img2, String img3, String img4, String img5) {
 		super();
 		this.id = id;
 		this.name = name;

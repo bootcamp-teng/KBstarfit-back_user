@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.starfit.user.data.CharacterRepository;
 import com.starfit.user.data.UserRepository;
 import com.starfit.user.model.User;
 
@@ -39,7 +38,7 @@ public class UserDomain {
 			entity.get().setPassword(user.getPassword());
 			entity.get().setPhone(user.getPhone());
 			entity.get().setStarId(user.getStarId());
-			entity.get().setUserId(user.getUserId());
+			entity.get().setLoginId(user.getLoginId());
 			entity.get().setCharacterId(user.getCharacterId());
 			User re  = sampleUserRepo.save(user);
 		}
@@ -50,11 +49,11 @@ public class UserDomain {
 		return new ResponseEntity<String> (entity+"", HttpStatus.OK);
 	}
 
-	public ResponseEntity<List<User>> getUserList(String userId) {
+	public ResponseEntity<List<User>> getUserList(String loginId) {
 		List<User> re = null;
 		try {
 			log.info("Start db select");
-			re = sampleUserRepo.findByuserId(userId);
+			re = sampleUserRepo.findByLoginId(loginId);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,6 +67,19 @@ public class UserDomain {
 			log.info("Start db select");
 			re = sampleUserRepo.findById(Id);
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Optional<User>> (re, HttpStatus.OK);
+	}
+
+	public ResponseEntity<Optional<User>> getUser(User user) {
+		Optional<User> re = null;
+		try {
+			log.info("Start db select");
+			re = sampleUserRepo.findByLoginIdAndPassword(user.getLoginId(), user.getPassword());
+			re.ifPresent(s -> s.setPassword(null));
+			log.info("login user : {}",re.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -11,22 +11,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.starfit.user.data.CharacterRepository;
-import com.starfit.user.model.Character;
+import com.starfit.user.data.AvatarRepository;
+import com.starfit.user.model.Avatar;
 
 @Service
-public class CharacterDomain {
+public class AvatarDomain {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	private CharacterRepository sampleCharacterRepo;
+	private AvatarRepository sampleCharacterRepo;
 	
 	/*
 	 * getGoalList: 목표 목록을 100개까지 리턴
 	 */
-	public ResponseEntity<List<Character>> getCharList() { 
+	public ResponseEntity<List<Avatar>> getCharList() { 
 		
-		List<Character> list = new ArrayList<>();;
+		List<Avatar> list = new ArrayList<>();;
 
 		System.out.println(list);
 		try {
@@ -38,14 +38,14 @@ public class CharacterDomain {
 		
 		log.debug("user counts : {}", list.size());
 		
-		return new ResponseEntity<List<Character>> (list, HttpStatus.OK);
+		return new ResponseEntity<List<Avatar>> (list, HttpStatus.OK);
 	}
 	
 	/*
 	 * getGoalById: goalId에 해당하는 목표정보 리턴 
 	 */
-	public ResponseEntity <Optional<Character>> getCharById(Long goalId) { 
-		Optional<Character> re = null;
+	public ResponseEntity <Optional<Avatar>> getCharById(Long goalId) { 
+		Optional<Avatar> re = null;
 		try {
 			log.info("Start db select");
 			re = sampleCharacterRepo.findById(goalId);
@@ -53,16 +53,16 @@ public class CharacterDomain {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ResponseEntity<Optional<Character>> (re, HttpStatus.OK);
+		return new ResponseEntity<Optional<Avatar>> (re, HttpStatus.OK);
 	}
 	
 	/*
 	 * updateGoal: 목표 정보 변경 
 	 */
-	public ResponseEntity <String > updateChar(Character sampleChar) throws Exception { 
+	public ResponseEntity <String > updateChar(Avatar sampleChar) throws Exception { 
 		log.info("Start db update==>"+sampleChar.getId());
-		Character re;
-		Optional<Character> entity = sampleCharacterRepo.findById(sampleChar.getId());
+		Avatar re;
+		Optional<Avatar> entity = sampleCharacterRepo.findById(sampleChar.getId());
 		if(entity.isPresent()) {
 			entity.get().setImg1(sampleChar.getImg1());
 			entity.get().setImg2(sampleChar.getImg2());
@@ -81,9 +81,9 @@ public class CharacterDomain {
 	/*
 	 * insertGoal: 목표 추가 
 	 */
-	public ResponseEntity <String > insertChar(Character sampleChar) throws Exception { 
+	public ResponseEntity <String > insertChar(Avatar sampleChar) throws Exception { 
 		log.info("Start db insert");
-		Character re  = sampleCharacterRepo.save(sampleChar);
+		Avatar re  = sampleCharacterRepo.save(sampleChar);
 		log.debug("result :"+ re);
 		
 		return new ResponseEntity<String> (re+"", HttpStatus.OK);

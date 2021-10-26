@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.starfit.user.model.Character;
+import com.starfit.user.model.Avatar;
 import com.starfit.user.model.User;
 import com.starfit.user.service.UserService;
 
@@ -28,13 +28,13 @@ public class UserController {
 	
 	@GetMapping("/v1/char")	
 	@ApiOperation(value="아바타 정보 가져오기", notes="아바타 정보를 제공합니다. ")
-	public ResponseEntity<List<Character>> getCharList() { 
+	public ResponseEntity<List<Avatar>> getCharList() { 
 		return userService.getCharList();
 	}
 	
 	@GetMapping("/v1/char/{charId}")
 	@ApiOperation(value="아이디로 아바타 상세 정보 가져오기 ")
-	public ResponseEntity <Optional<Character>> getCharById(
+	public ResponseEntity <Optional<Avatar>> getCharById(
 				@PathVariable (name="charId", required = true) Long charId
 			) { 
 		return userService.getCharById(charId);
@@ -43,7 +43,7 @@ public class UserController {
 	@PutMapping("/v1/char/{charId}")
 	@ApiOperation(value="아바타 정보 변경하기 ")
 	public ResponseEntity <String > updateChar(
-			@RequestBody Character sampleChar
+			@RequestBody Avatar sampleChar
 		) throws Exception { 
 		
 		return userService.updateChar(sampleChar);
@@ -52,7 +52,7 @@ public class UserController {
 	@PostMapping("/v1/char")
 	@ApiOperation(value="아바타 정보 등록하기 ")
 	public ResponseEntity <String > insertChar(
-			@RequestBody Character sampleChar
+			@RequestBody Avatar sampleChar
 		) throws Exception { 
 		
 		return userService.insertChar(sampleChar);
@@ -97,6 +97,15 @@ public class UserController {
 			@RequestBody User user
 			) throws Exception{
 		return userService.updateUser(user);
+	}
+	
+	@PostMapping("/v1/login")
+	@ApiOperation(value="로그인 하기")
+	public ResponseEntity <Optional<User>> login(
+			@RequestBody User user
+		) throws Exception { 
+		
+		return userService.login(user);
 	}
 //	@GetMapping("/createtestusers/{startUserId}/{userCount}")
 //	@ApiOperation(value="테스트 사용자를 userCount명 등록하기 ")
