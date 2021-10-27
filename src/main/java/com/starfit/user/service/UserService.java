@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -43,13 +44,18 @@ public class UserService {
 	}
 
 	public ResponseEntity<String> insertUser(User user) throws Exception {
-		return userDomain.insertUser(user);
+		ResponseEntity<List<User>> entity = userDomain.getUserList(user.getLoginId());
+		if (entity.getBody().isEmpty()) {
+			return userDomain.insertUser(user);
+		}
+		return new ResponseEntity<String> ("이미 존재하는 아이디 입니다", HttpStatus.CREATED);
 	}
 
 	public ResponseEntity<String> updateUser( User user) throws Exception {
 		return userDomain.updateUser(user);
 	}
 
+	// 아이디 중복 검사
 	public ResponseEntity<List<User>> getUserList(String userId) throws Exception {
 		return userDomain.getUserList(userId);
 	}
